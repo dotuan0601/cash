@@ -1,0 +1,30 @@
+
+@font-face {
+    font-family: 'UTM_Bebas';
+    src: url('../fonts/UTM Bebas.eot');
+    src: url('../fonts/UTM Bebas.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/UTM Bebas.woff') format('woff'),
+         url('../fonts/UTM Bebas.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'UTM_HelvetIns';
+    src: url('../fonts/UTM HelvetIns.eot');
+    src: url('../fonts/UTM HelvetIns.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/UTM HelvetIns.woff') format('woff'),
+         url('../fonts/UTM HelvetIns.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'UTM Scriptina KT';
+    src: url('../fonts/UTM Scriptina KT.eot');
+    src: url('../fonts/UTM Scriptina KT.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/UTM Scriptina KT.woff') format('woff'),
+         url('../fonts/UTM Scriptina KT.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
