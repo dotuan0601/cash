@@ -41,7 +41,9 @@ class AuthServiceProvider extends ServiceProvider
             'salon_read',
             'salon_write',
             'service_read',
-            'service_write'
+            'service_write',
+            'customer_read',
+            'customer_write',
 
 
         ];

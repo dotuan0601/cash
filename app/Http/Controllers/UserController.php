@@ -64,7 +64,8 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role = 'user_read|user_write|banner_read|banner_write|category_read|category_write|post_read|post_write|salon_read|salon_write|service_write|service_read';
+        $user->role = 'user_read|user_write|banner_read|banner_write|category_read|category_write|post_read|post_write|
+        salon_read|salon_write|service_write|service_read|customer_write|customer_read';
         $user->password = Hash::make($request->password);
 
         $user->save();
@@ -125,7 +126,8 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role = 'user_read|user_write|banner_read|banner_write|category_read|category_write|post_read|post_write|salon_read|salon_write|service_write|service_read';
+        $user->role = 'user_read|user_write|banner_read|banner_write|category_read|category_write|post_read|post_write|
+        salon_read|salon_write|service_write|service_read|customer_write|customer_read';
 
         if ($request->password) {
             $this->validate($request, [

@@ -35,8 +35,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('banner', 'BannerController', ['except' => ['show']]);
         Route::resource('salon', 'SalonController', ['except' => ['show']]);
         Route::resource('service', 'ServiceController', ['except' => ['show']]);
+        Route::resource('customer', 'CustomerController', ['except' => ['show']]);
         Route::resource('booking', 'BookingController', ['except' => ['show','store','create','edit','update']]);
         Route::get('booking/changeStatus/{id?}',['as'=>'booking.changeStatus','uses'=>'BookingController@changeStatus']);
+        Route::get('district/searchByProvince/{id?}',['as'=>'district.searchByProvince','uses'=>'DistrictController@searchByProvince']);
         // dashboard home
         Route::get('/', ['as' => 'dashboard', function () {
             return view('home');
