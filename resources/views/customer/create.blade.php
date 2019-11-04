@@ -11,7 +11,7 @@
                 <!-- /.box-header -->
                 <!-- form start -->
 
-                <form class="form-horizontal" method="post" action="{{ route('admin.customer.store') }}">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ route('admin.customer.store') }}">
                     <input type="hidden" name="_method" value="POST">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
@@ -21,18 +21,9 @@
 
 
                             <div class="col-md-5">
-                                <input class="form-control col-md-10 " id="feature_image" name="feature_image"
-                                       placeholder="Ảnh đại diện"
-                                       type="text">
+                                <input type="file" multiple id="avatar" name="avatar[]">
+                                <div class="gallery-avatar"></div>
 
-                            </div>
-                            <div class="col-md-2">
-                                <a id="lfm" data-input="feature_image" data-preview="holder" class="btn btn-primary">
-                                    <i class="fa fa-picture-o"></i> Chọn ảnh
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <img id="holder" style="margin-top:15px;max-height:100px;">
                             </div>
                         </div>
                         <div class="form-group">
@@ -66,8 +57,8 @@
                             <label for="customerIdentity" class="col-md-2 control-label">CMND/Passport</label>
 
                             <div class="col-md-5">
-                                <input class="form-control" id="customerIdentity" name="phone" placeholder="CMND/Passport"
-                                       type="text" required>
+                                <input type="file" multiple id="identity" name="identity[]">
+                                <div class="gallery-customer"></div>
                             </div>
 
                         </div>
@@ -129,6 +120,34 @@
          CKEDITOR.replace('description', options);
   //         CKEDITOR.replace('summary', options);
 
+    </script>
+    <script>
+        var imagesPreview = function(input, placeToInsertImagePreview) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result)
+                            .attr('width', '200px').attr('height', '200px').appendTo(placeToInsertImagePreview);
+                    };
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#identity').on('change', function() {
+            imagesPreview(this, 'div.gallery-customer');
+        });
+
+        $('#avatar').on('change', function() {
+            imagesPreview(this, 'div.gallery-avatar');
+        });
     </script>
     <script type="text/javascript">
         $(document).ready(function () {

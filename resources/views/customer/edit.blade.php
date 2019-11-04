@@ -12,7 +12,8 @@
                 <!-- /.box-header -->
                 <!-- form start -->
 
-                <form class="form-horizontal" method="post" action="{{ route('admin.customer.update',['id'=>$customer->id]) }}">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data"
+                      action="{{ route('admin.customer.update',['id'=>$customer->id]) }}">
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
@@ -22,18 +23,16 @@
 
 
                             <div class="col-md-5">
-                                <input class="form-control col-md-10 " id="feature_image" name="feature_image"
-                                       placeholder="featherImage" value="{{$customer->feature_image}}"
-                                       type="text">
+                                <input type="file" multiple id="avatar" name="avatar[]">
+                                <div class="gallery-avatar">
+                                    @php(
+                                        $customer_feature_img = explode(';', $customer->feature_image)
+                                    )
+                                    @foreach($customer_feature_img as $f_img)
+                                        <img src="{{url('/photos/customers') . '/' . $f_img}}" height="200px"  width="200px">
+                                    @endforeach
+                                </div>
 
-                            </div>
-                            <div class="col-md-2">
-                                <a id="lfm" data-input="feature_image" data-preview="holder" class="btn btn-primary">
-                                    <i class="fa fa-picture-o"></i> Chọn ảnh
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <img id="holder" style="margin-top:15px;max-height:100px;" src="{{$customer->feature_image}}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -67,8 +66,15 @@
                             <label for="customerIdentity" class="col-md-2 control-label">CMND/Passport</label>
 
                             <div class="col-md-5">
-                                <input class="form-control" id="customerIdentity" name="identity" placeholder="CMND/Passport"
-                                       type="text" required value="{{$customer->identity }}">
+                                <input type="file" multiple id="identity" name="identity[]">
+                                <div class="gallery-customer">
+                                    @php(
+                                        $customer_identity_img = explode(';', $customer->identity)
+                                    )
+                                    @foreach($customer_identity_img as $i_img)
+                                        <img src="{{url('/photos/customers') . '/' . $i_img}}" height="200px"  width="200px">
+                                    @endforeach
+                                </div>
                             </div>
 
                         </div>
@@ -117,25 +123,36 @@
 
 @section('script')
     @parent
-    <script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
+
     <script>
-        var options = {
-            filebrowserImageBrowseUrl: '{{route('unisharp.lfm.show')}}?type=Images',
-            filebrowserImageUploadUrl: '{{route('unisharp.lfm.upload')}}?type=Images&_token=',
-            filebrowserBrowseUrl: '{{route('unisharp.lfm.show')}}?type=Files',
-            filebrowserUploadUrl: '{{route('unisharp.lfm.show')}}?type=Files&_token='
+        var imagesPreview = function(input, placeToInsertImagePreview) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result)
+                            .attr('width', '200px').attr('height', '200px').appendTo(placeToInsertImagePreview);
+                    };
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
         };
-    </script>
-    <script>
-        var domain = "";
-        $('#lfm').filemanager('image', {prefix: domain});
 
-        /*   $('#lfm').filemanager('image');*/
-        // Replace the <textarea id="editor1"> with a CKEditor
-        // instance, using default configuration.
-           CKEDITOR.replace('description', options);
-         //  CKEDITOR.replace('summary', options);
+        $('#identity').on('change', function() {
+            $('.gallery-customer').html('');
+            imagesPreview(this, 'div.gallery-customer');
+        });
 
+        $('#avatar').on('change', function() {
+            $('.gallery-avatar').html('');
+            imagesPreview(this, 'div.gallery-avatar');
+        });
     </script>
     <script type="text/javascript">
         $(document).ready(function () {

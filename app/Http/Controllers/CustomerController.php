@@ -54,16 +54,35 @@ class CustomerController extends Controller
             abort(403, 'Permission denied.');
         }
 
+        $avatar_imgs = [];
+        if($request->hasfile('avatar'))
+        {
+            foreach($request->file('avatar') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/photos/customers/', $name);
+                $avatar_imgs[] = $name;
+            }
+        }
+
+        $identity_imgs = [];
+        if($request->hasfile('identity'))
+        {
+            foreach($request->file('identity') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/photos/customers/', $name);
+                $identity_imgs[] = $name;
+            }
+        }
+
         $customer = new Customer();
-
-
-
         $customer->name = $request->name;
         $customer->nickname = '';
-        $customer->feature_image = $request->feature_image;
+        $customer->feature_image = implode(';', $avatar_imgs);
         $customer->phone = $request->phone;
         $customer->email = $request->email;
-        $customer->identity = $request->identity;
+        $customer->identity = implode(';', $identity_imgs);
 
         if ($request->province) {
             $customer->province = $request->province;
@@ -122,14 +141,39 @@ class CustomerController extends Controller
             abort(403, 'Permission denied.');
         }
 
+        $avatar_imgs = [];
+        if($request->hasfile('avatar'))
+        {
+            foreach($request->file('avatar') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/photos/customers/', $name);
+                $avatar_imgs[] = $name;
+            }
+        }
+
+        $identity_imgs = [];
+        if($request->hasfile('identity'))
+        {
+            foreach($request->file('identity') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/photos/customers/', $name);
+                $identity_imgs[] = $name;
+            }
+        }
 
         $customer = Customer::findOrFail($id);
 
         $customer->name = $request->name;
-        $customer->feature_image = $request->feature_image;
+        if (count($avatar_imgs) > 0) {
+            $customer->feature_image = implode(';', $avatar_imgs);
+        }
         $customer->phone = $request->phone;
         $customer->email = $request->email;
-        $customer->identity = $request->identity;
+        if (count($identity_imgs) > 0) {
+            $customer->identity = implode(';', $identity_imgs);
+        }
 
         if ($request->province) {
             $customer->province = $request->province;

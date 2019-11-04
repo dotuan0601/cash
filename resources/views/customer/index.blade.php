@@ -28,11 +28,25 @@
                         @foreach ($customers as $customer)
                             <tr>
                                 <td>{{$customer->id}}</td>
-                                <td><img src="{{$customer->feature_image}}" height="100px"  width="100px"></td>
+                                @php(
+                                    $customer_feature_img = explode(';', $customer->feature_image)
+                                )
+                                <td>
+                                    @foreach($customer_feature_img as $f_img)
+                                        <img src="{{url('/photos/customers') . '/' . $f_img}}" height="100px"  width="100px" style="margin-bottom: 2px">
+                                    @endforeach
+                                </td>
                                 <td>{{$customer->name}}</td>
                                 <td>{{$customer->phone}}</td>
                                 <td>{{$customer->email}}</td>
-                                <td>{{$customer->identity}}</td>
+                                @php(
+                                    $customer_identity_img = explode(';', $customer->identity)
+                                )
+                                <td>
+                                    @foreach($customer_identity_img as $i_img)
+                                        <img src="{{url('/photos/customers') . '/' . $i_img}}" height="100px"  width="100px" style="margin-bottom: 2px">
+                                    @endforeach
+                                </td>
                                 <td>{{\App\District::where('id', $customer->district)->first()->name . ' - ' .
                                 \App\Province::where('id', $customer->province)->first()->name}}</td>
 
@@ -99,6 +113,10 @@
                         $('.dataTables_paginate').hide();
                     }
                 },
+                "dom": 'Bfrtip',
+                "buttons": [
+                    'excel'
+                ]
             });
             $('#index-box').parent('div').addClass('table-responsive')
         });
