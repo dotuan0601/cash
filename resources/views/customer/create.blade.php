@@ -66,7 +66,7 @@
                             <label for="customerProvince" class="col-md-2 control-label">Tỉnh thành</label>
 
                             <div class="col-md-5">
-                                <select class="form-control"  id="customerProvince" name="province">
+                                <select required class="form-control"  id="customerProvince" name="province">
                                     <option value="">Chọn tỉnh</option>
                                     @foreach($provinces as $province)
                                         <option value="{{$province['id']}}">{{$province['name']}}</option>
@@ -79,7 +79,7 @@
                             <label for="customerDistrict" class="col-md-2 control-label">Quận huyện</label>
 
                             <div class="col-md-5">
-                                <select class="form-control"  id="customerDistrict" name="district">
+                                <select required class="form-control"  id="customerDistrict" name="district">
                                     <option value="">Chọn quận huyện</option>
                                 </select>
                             </div>

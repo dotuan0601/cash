@@ -32,9 +32,13 @@
                                     $customer_feature_img = explode(';', $customer->feature_image)
                                 )
                                 <td>
-                                    @foreach($customer_feature_img as $f_img)
-                                        <img src="{{url('/photos/customers') . '/' . $f_img}}" height="100px"  width="100px" style="margin-bottom: 2px">
-                                    @endforeach
+                                    @if($customer->feature_image)
+                                        @foreach($customer_feature_img as $f_img)
+                                            <img src="{{url('/photos/customers') . '/' . $f_img}}" height="100px"  width="100px" style="margin-bottom: 2px">
+                                        @endforeach
+                                    @else
+                                        <img src="{{url('/photos/customers') . '/no_image.png'}}" height="100px"  width="100px" style="margin-bottom: 2px">
+                                    @endif
                                 </td>
                                 <td>{{$customer->name}}</td>
                                 <td>{{$customer->phone}}</td>
@@ -43,9 +47,13 @@
                                     $customer_identity_img = explode(';', $customer->identity)
                                 )
                                 <td>
-                                    @foreach($customer_identity_img as $i_img)
-                                        <img src="{{url('/photos/customers') . '/' . $i_img}}" height="100px"  width="100px" style="margin-bottom: 2px">
-                                    @endforeach
+                                    @if($customer->identity)
+                                        @foreach($customer_identity_img as $i_img)
+                                            <img src="{{url('/photos/customers') . '/' . $i_img}}" height="100px"  width="100px" style="margin-bottom: 2px">
+                                        @endforeach
+                                    @else
+                                        <img src="{{url('/photos/customers') . '/no_image.png'}}" height="100px"  width="100px" style="margin-bottom: 2px">
+                                    @endif
                                 </td>
                                 <td>{{\App\District::where('id', $customer->district)->first()->name . ' - ' .
                                 \App\Province::where('id', $customer->province)->first()->name}}</td>

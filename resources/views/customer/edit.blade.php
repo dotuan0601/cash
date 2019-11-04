@@ -82,7 +82,7 @@
                             <label for="customerProvince" class="col-md-2 control-label">Tỉnh thành</label>
 
                             <div class="col-md-5">
-                                <select class="form-control"  id="customerProvince" name="province">
+                                <select required class="form-control"  id="customerProvince" name="province">
                                     <option value="">Chọn tỉnh</option>
                                     @foreach($provinces as $province)
                                         @if($province['id'] == $customer->province)
@@ -99,7 +99,7 @@
                             <label for="customerDistrict" class="col-md-2 control-label">Quận huyện</label>
 
                             <div class="col-md-5">
-                                <select class="form-control"  id="customerDistrict" name="district">
+                                <select required class="form-control"  id="customerDistrict" name="district">
                                     <option selected value="{{$customer->district}}">{{
                                         \App\District::where('id', $customer->district)->first()->name
                                     }}</option>
