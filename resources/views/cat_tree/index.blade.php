@@ -5,7 +5,7 @@
         <div class="col-xs-12">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Danh sách danh mục</h3>
+                    <h3 class="box-title">Danh sách chuyên mục</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -54,7 +54,7 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer clearfix no-border">
-                    <a href="{{ route('admin.category.create') }}" class="btn btn-flat btn-primary">Thêm danh mục mới</a>
+                    <a href="{{ route('admin.category.create') }}" class="btn btn-flat btn-primary">Thêm chuyên mục mới</a>
                 </div>
 
             </div>
@@ -72,10 +72,10 @@
         $(function () {
             $('#index-box').DataTable(
                 "aoColumnDefs": [
-                { "bSortable": false, "aTargets": [ 0, 1, 2, 3 ] },
-                { "bSearchable": false, "aTargets": [ 0, 1, 2, 3 ] }
-            ]
-        );
+                    { "bSortable": false, "aTargets": [ 0, 1, 2, 3 ] },
+                    { "bSearchable": false, "aTargets": [ 0, 1, 2, 3 ] }
+                ]
+            );
             $('#index-box').parent('div').addClass('table-responsive')
         });
     </script>

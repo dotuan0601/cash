@@ -31,26 +31,26 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="">
-                    <i class='fa fa-shopping-basket'></i>
-                    <span>Quản lý Salon</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{{route('admin.salon.index')}}">
-                            <i class="fa fa-list-alt"></i>
-                            Danh Sách</a>
-                    </li>
+{{--            <li class="treeview">--}}
+{{--                <a href="">--}}
+{{--                    <i class='fa fa-shopping-basket'></i>--}}
+{{--                    <span>Quản lý Salon</span>--}}
+{{--                    <i class="fa fa-angle-left pull-right"></i>--}}
+{{--                </a>--}}
+{{--                <ul class="treeview-menu">--}}
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.salon.index')}}">--}}
+{{--                            <i class="fa fa-list-alt"></i>--}}
+{{--                            Danh Sách</a>--}}
+{{--                    </li>--}}
 
-                    <li>
-                        <a href="{{route('admin.salon.create')}}">
-                            <i class="fa fa-plus-square"></i>
-                            Thêm Mới</a>
-                    </li>
-                </ul>
-            </li>
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.salon.create')}}">--}}
+{{--                            <i class="fa fa-plus-square"></i>--}}
+{{--                            Thêm Mới</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
            {{-- <li class="treeview">
                 <a href="#">
                     <i class='fa fa-file-image-o'></i>
@@ -71,10 +71,10 @@
                     </li>
                 </ul>
             </li>--}}
-      {{--      <li class="treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class='fa fa-file-image-o'></i>
-                    <span>Quản lý Chuyên Mục</span>
+                    <span>Quản lý Danh Mục</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -90,145 +90,145 @@
                             Thêm Mới</a>
                     </li>
                 </ul>
-            </li>--}}
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-file-text" ></i>
-                    <span>Quản lý Blog</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{{route('admin.post.index')}}">
-                            <i class="fa fa-list-alt"></i>
-                            Danh Sách</a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.post.create')}}">
-                            <i class="fa fa-plus-square"></i>
-                            Thêm Mới</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-file-text" ></i>
-                    <span>Quản lý Khuyến Mại</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{{route('admin.promotion.index')}}">
-                            <i class="fa fa-list-alt"></i>
-                            Danh Sách</a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.promotion.create')}}">
-                            <i class="fa fa-plus-square"></i>
-                            Thêm Mới</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-file-text" ></i>
-                    <span>Quản lý Zio TV</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{{route('admin.tv.index')}}">
-                            <i class="fa fa-list-alt"></i>
-                            Danh Sách</a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.tv.create')}}">
-                            <i class="fa fa-plus-square"></i>
-                            Thêm Mới</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-file-text" ></i>
-                    <span>Quản lý Video (Blog tóc đẹp)</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{{route('admin.video.index')}}">
-                            <i class="fa fa-list-alt"></i>
-                            Danh Sách</a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('admin.video.create')}}">
-                            <i class="fa fa-plus-square"></i>
-                            Thêm Mới</a>
-                    </li>
-                </ul>
             </li>
 
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-file-text" ></i>
-                    <span>Quản lý Dịch Vụ</span>
+                    <span>Quản lý Sản phẩm</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="{{route('admin.service.index')}}">
+                        <a href="{{route('admin.product.index')}}">
                             <i class="fa fa-list-alt"></i>
                             Danh Sách</a>
                     </li>
 
                     <li>
-                        <a href="{{route('admin.service.create')}}">
+                        <a href="{{route('admin.product.create')}}">
                             <i class="fa fa-plus-square"></i>
                             Thêm Mới</a>
                     </li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bookmark-o" ></i>
-                    <span>Quản lý Đặt Chỗ</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{{route('admin.booking.index')}}">
-                            <i class="fa fa-list-alt"></i>
-                            Danh Sách</a>
-                    </li>
+{{--            <li class="treeview">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="fa fa-file-text" ></i>--}}
+{{--                    <span>Quản lý Khuyến Mại</span>--}}
+{{--                    <i class="fa fa-angle-left pull-right"></i>--}}
+{{--                </a>--}}
+{{--                <ul class="treeview-menu">--}}
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.promotion.index')}}">--}}
+{{--                            <i class="fa fa-list-alt"></i>--}}
+{{--                            Danh Sách</a>--}}
+{{--                    </li>--}}
+
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.promotion.create')}}">--}}
+{{--                            <i class="fa fa-plus-square"></i>--}}
+{{--                            Thêm Mới</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--            <li class="treeview">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="fa fa-file-text" ></i>--}}
+{{--                    <span>Quản lý Zio TV</span>--}}
+{{--                    <i class="fa fa-angle-left pull-right"></i>--}}
+{{--                </a>--}}
+{{--                <ul class="treeview-menu">--}}
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.tv.index')}}">--}}
+{{--                            <i class="fa fa-list-alt"></i>--}}
+{{--                            Danh Sách</a>--}}
+{{--                    </li>--}}
+
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.tv.create')}}">--}}
+{{--                            <i class="fa fa-plus-square"></i>--}}
+{{--                            Thêm Mới</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--            <li class="treeview">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="fa fa-file-text" ></i>--}}
+{{--                    <span>Quản lý Video (Blog tóc đẹp)</span>--}}
+{{--                    <i class="fa fa-angle-left pull-right"></i>--}}
+{{--                </a>--}}
+{{--                <ul class="treeview-menu">--}}
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.video.index')}}">--}}
+{{--                            <i class="fa fa-list-alt"></i>--}}
+{{--                            Danh Sách</a>--}}
+{{--                    </li>--}}
+
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.video.create')}}">--}}
+{{--                            <i class="fa fa-plus-square"></i>--}}
+{{--                            Thêm Mới</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+
+{{--            <li class="treeview">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="fa fa-file-text" ></i>--}}
+{{--                    <span>Quản lý Dịch Vụ</span>--}}
+{{--                    <i class="fa fa-angle-left pull-right"></i>--}}
+{{--                </a>--}}
+{{--                <ul class="treeview-menu">--}}
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.service.index')}}">--}}
+{{--                            <i class="fa fa-list-alt"></i>--}}
+{{--                            Danh Sách</a>--}}
+{{--                    </li>--}}
+
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.service.create')}}">--}}
+{{--                            <i class="fa fa-plus-square"></i>--}}
+{{--                            Thêm Mới</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--            <li class="treeview">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="fa fa-bookmark-o" ></i>--}}
+{{--                    <span>Quản lý Đặt Chỗ</span>--}}
+{{--                    <i class="fa fa-angle-left pull-right"></i>--}}
+{{--                </a>--}}
+{{--                <ul class="treeview-menu">--}}
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.booking.index')}}">--}}
+{{--                            <i class="fa fa-list-alt"></i>--}}
+{{--                            Danh Sách</a>--}}
+{{--                    </li>--}}
 
 
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-bookmark-o" ></i>
-                    <span>Quản lý Khách hàng</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{{route('admin.customer.index')}}">
-                            <i class="fa fa-list-alt"></i>
-                            Danh Sách</a>
-                    </li>
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--            <li class="treeview">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="fa fa-bookmark-o" ></i>--}}
+{{--                    <span>Quản lý Khách hàng</span>--}}
+{{--                    <i class="fa fa-angle-left pull-right"></i>--}}
+{{--                </a>--}}
+{{--                <ul class="treeview-menu">--}}
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.customer.index')}}">--}}
+{{--                            <i class="fa fa-list-alt"></i>--}}
+{{--                            Danh Sách</a>--}}
+{{--                    </li>--}}
 
-                    <li>
-                        <a href="{{route('admin.customer.create')}}">
-                            <i class="fa fa-plus-square"></i>
-                            Thêm Mới</a>
-                    </li>
-                </ul>
-            </li>
+{{--                    <li>--}}
+{{--                        <a href="{{route('admin.customer.create')}}">--}}
+{{--                            <i class="fa fa-plus-square"></i>--}}
+{{--                            Thêm Mới</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
 
         </ul>
         <!-- /.sidebar-menu -->

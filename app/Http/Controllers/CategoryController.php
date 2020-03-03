@@ -21,8 +21,40 @@ class CategoryController extends Controller
         if (Auth::user()->cannot('category_read')) {
             abort(403, 'Permission denied.');
         }
-        $categories = Category::all();
-        return view('category.index', ['categories' => $categories]);
+        $categories = [];
+        $roots = Category::where('parent_id', null)->get();
+        if (sizeof($roots) > 0) {
+            foreach ($roots as $root) {
+                $categories[] = $root;
+                $children = $this->getChildren($root);
+                if (count($children) > 0) {
+                    foreach ($children as $child) {
+                        $categories[] = $child;
+                    }
+                }
+            }
+        }
+
+        return view('cat_tree.index', ['categories' => $categories]);
+    }
+
+    private function getChildren($parent)
+    {
+        $res = [];
+        $cats = Category::where('parent_id', $parent['id'])->get();
+        if (sizeof($cats) > 0) {
+            foreach($cats as $cat) {
+                $res[] = $cat;
+                $grandchildren = $this->getChildren($cat);
+                if (count($grandchildren) > 0) {
+                    foreach ($grandchildren as $grand) {
+                        $res[] = $grand;
+                    }
+                }
+            }
+        }
+
+        return $res;
     }
 
     /**
@@ -36,7 +68,8 @@ class CategoryController extends Controller
         if (Auth::user()->cannot('category_write')) {
             abort(403, 'Permission denied.');
         }
-        $categories = Category::all();
+        $categories = Category::where('level', '<', 2)
+            ->get();
         return view('category.create', ['parents' => $categories]);
     }
 
@@ -59,10 +92,10 @@ class CategoryController extends Controller
 
         if ($request->parent_id > 0) {
             $category->parent_id = $request->parent_id;
+            $parentCat = Category::where('id', $request->parent_id)->first();
+            $category->level = $parentCat['level'] + 1;
         }
         $category->name = $request->name;
-
-
 
 
         $category->save();
@@ -94,7 +127,9 @@ class CategoryController extends Controller
             abort(403, 'Permission denied.');
         }
         $category = Category::findOrFail($id);
-        $categories = Category::all();
+        $categories = Category::where('level', '<', 2)
+            ->where('id', '!=', $id)
+            ->get();
 
         return view('category.edit', ['category' => $category, 'parents' => $categories]);
     }
@@ -120,8 +155,11 @@ class CategoryController extends Controller
 
         if ($request->parent_id > 0) {
             $category->parent_id = $request->parent_id;
+            $parentCat = Category::where('id', $request->parent_id)->first();
+            $category->level = $parentCat['level'] + 1;
         } else {
             $category->parent_id = null;
+            $category->level = 0;
         }
         $category->name = $request->name;
 

@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('user', 'UserController', ['except' => ['show', 'destroy']]);
         Route::resource('category', 'CategoryController', ['except' => ['show']]);
         Route::resource('post', 'PostController', ['except' => ['show']]);
+        Route::resource('product', 'ProductController', ['except' => ['show']]);
         Route::resource('video', 'VideoController', ['except' => ['show']]);
         Route::resource('tv', 'TVController', ['except' => ['show']]);
 
