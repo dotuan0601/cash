@@ -12,6 +12,8 @@
  */
 
 Route::get('/', ['as' => 'home', 'uses' => 'FrontController@index']);
+Route::get('/cat/{catSlug}', ['as' => 'productsByCat', 'uses' => 'FrontController@productsByCat']);
+Route::get('/product/{id}', ['as' => 'product', 'uses' => 'FrontController@product']);
 Route::get('/news', ['as' => 'news', 'uses' => 'FrontController@news']);
 Route::get('/news_detail/{post_slug}', ['as' => 'news_detail', 'uses' => 'FrontController@news_detail']);
 Route::get('/promotion', ['as' => 'promotion', 'uses' => 'FrontController@promotion']);

@@ -27,8 +27,11 @@
 
                             <th>Ảnh</th>
                             <th>Tên</th>
-                            <th>Mô tả</th>
+                            <th>Giới thiệu</th>
+                            <th style="width: 40% !important;">Mô tả</th>
                             <th>Danh mục</th>
+                            <th>Vị trí</th>
+                            <th>Hiển thị ngoài trang chủ</th>
                             <th>Ngày tạo</th>
                             <th>Tác động</th>
                         </tr>
@@ -40,8 +43,11 @@
 
                                 <td><img src="{{$product->feather_image}}" height="100px"  width="100px"></td>
                                 <td>{{$product->name}}</td>
-                                <td>{{htmlentities($product->description)}}</td>
+                                <td>{!! $product->sort_description !!}</td>
+                                <td>{!! $product->description !!}</td>
                                 <td>{{$arrCates[$product->category_id]}}</td>
+                                <td>{{$product->position}}</td>
+                                <td>{{$product->show_homepage}}</td>
                                 <td>{{$product->created_at}}</td>
                                 <td>
                                 

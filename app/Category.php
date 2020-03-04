@@ -87,4 +87,9 @@ class Category extends Model
     public function posts(){
         return $this->belongsToMany('App\Post');
     }
+
+    public function children()
+    {
+        return Category::where('parent_id', $this->id)->get();
+    }
 }

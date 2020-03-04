@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use App\Product;
 use App\Salon;
 use App\Service;
 use App\Report;
@@ -24,16 +25,39 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $salons = Salon::all();
-        $services = Service::orderBy('order','desc')->orderBy('created_at','desc')->get();
-        $promotions = Post::where('category_id',2)->orderBy('priority','desc')->orderBy('created_at','desc')->take(4)->get();
-        $blogs = Post::where('category_id',1)->orderBy('priority','desc')->orderBy('created_at','desc')->take(4)->get();
-        $videos = Post::where('category_id',3)->orderBy('priority','desc')->orderBy('created_at','desc')->get();
-        $tvs = Post::where('category_id',4)->orderBy('priority','desc')->orderBy('created_at','desc')->get();
+        $products = Product::where('show_homepage', 1)->orderBy('position','desc')->get();
+        $categories = Category::where('level', 0)->get();
 
-        return view('front.index',['salons'=>$salons,'services'=>$services,'promotions'=>$promotions,'blogs'=>$blogs,'videos'=>$videos,'tvs'=>$tvs]);
+        return view('front.index', [
+            'products'=> $products,
+            'categories' => $categories
+        ]);
 
     }
+
+    public function productsByCat($catSlug)
+    {
+        $catBySlug = Category::where('slug', $catSlug)->first();
+        $products = Product::where('category_id', $catBySlug['id'])->orderBy('position','desc')->get();
+        $categories = Category::where('level', 0)->get();
+
+        return view('front.products', [
+            'products'=> $products,
+            'categories' => $categories
+        ]);
+    }
+
+    public function product($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::where('level', 0)->get();
+
+        return view('front.product', [
+            'product'=> $product,
+            'categories' => $categories
+        ]);
+    }
+
     public function booking()
     {
         $salons = Salon::all();

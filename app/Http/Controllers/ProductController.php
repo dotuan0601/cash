@@ -63,6 +63,9 @@ class ProductController extends Controller
         $product->url = '';
         $product->category_id = $request->category_id;
         $product->feather_image = $request->feather_image;
+        $product->sort_description = $request->sort_description;
+        $product->show_homepage = $request->show_homepage === 'on' ? 1 : 0;
+        $product->position = $request->position;
         $product->save();
 
         return redirect()->route('admin.product.index');
@@ -89,6 +92,9 @@ class ProductController extends Controller
         $product->url = '';
         $product->category_id = $request->category_id;
         $product->feather_image = $request->feather_image;
+        $product->sort_description = $request->sort_description;
+        $product->show_homepage = $request->show_homepage === 'on' ? 1 : 0;
+        $product->position = $request->position;
         $product->save();
 
         return redirect()->route('admin.product.index');

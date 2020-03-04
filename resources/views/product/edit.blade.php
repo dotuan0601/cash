@@ -55,10 +55,33 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="sort_description" class="col-md-2 control-label">Mô tả ngắn</label>
+
+                            <div class="col-md-10">
+                                <textarea id="sort_description" name="sort_description" class="form-control" required>
+                                    {{ $product->sort_description }}
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="description" class="col-md-2 control-label">Nội dung</label>
 
                             <div class="col-md-10">
                                 <textarea id="description" name="description" class="form-control" required>{!! $product->description !!}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="show_homepage" class="col-md-2 control-label">Hiển thị ngoài trang chủ</label>
+
+                            <div class="col-md-10">
+                                <input type="checkbox" id="show_homepage" name="show_homepage" {{ $product->show_homepage === 1 ? 'checked' : '' }}></input>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="position" class="col-md-2 control-label">Vị trí</label>
+
+                            <div class="col-md-10">
+                                <input type="number" id="position" name="position" class="form-control" required value="{{ $product->position }}"></input>
                             </div>
                         </div>
 
